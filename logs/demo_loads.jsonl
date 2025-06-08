@@ -1,0 +1,4 @@
+{"event": "demo_load", "timestamp": "2025-06-06T18:42:11.900194", "user": "Dr. A", "num_patients": 1, "demo_type": "wilsons_disease"}
+{"event": "demo_load", "timestamp": "2025-06-06T18:42:21.046912", "user": "Dr. A", "num_patients": 1, "demo_type": "wilsons_disease"}
+{"event": "demo_load", "timestamp": "2025-06-06T18:42:29.591146", "user": "Dr. A", "num_patients": 1, "demo_type": "wilsons_disease"}
+{"event": "demo_load", "timestamp": "2025-06-06T18:42:35.617239", "user": "Dr. A", "num_patients": 1, "demo_type": "wilsons_disease"}

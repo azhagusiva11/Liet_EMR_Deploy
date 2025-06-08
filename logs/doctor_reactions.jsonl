@@ -1,0 +1,23 @@
+{"timestamp": "2025-06-06T23:31:49.559312", "doctor": "Dr. A", "moment": "prescription_accepted", "data": {"prescription_length": 109, "was_edited": false}}
+{"timestamp": "2025-06-06T23:32:55.885628", "doctor": "Dr. A", "moment": "general_feedback", "data": {"feedback": "Good one "}}
+{"timestamp": "2025-06-06T23:42:45.400312", "doctor": "Dr. A", "moment": "ai_summary_good", "data": {"complexity": "complex", "emotion": "helpful"}}
+{"timestamp": "2025-06-06T23:43:17.713823", "doctor": "Dr. A", "moment": "prescription_accepted", "data": {"prescription_length": 89, "was_edited": false}}
+{"timestamp": "2025-06-06T23:45:36.345303", "doctor": "Dr. A", "moment": "general_feedback", "data": {"feedback": "There is a setting tab which is useless for now, and if there is a feedback here chat with founder is not needed, and then the All patients is not needed in the GUI, what if there are 100's of patients, tis is useless. and the Doctor tab above is useless as well, because it has to be a spearate registration for doctors, the doctor name and the doctor ID prints on the summary export, at the moment SOAP and Indian EMR has differnet prescription generated "}}
+{"timestamp": "2025-06-07T00:10:04.709141", "doctor": "Dr. Smith", "moment": "ai_summary_excellent", "data": {"complexity": "complex", "emotion": "excellent"}}
+{"timestamp": "2025-06-07T00:11:07.938877", "doctor": "Dr. Smith", "moment": "prescription_accepted", "data": {"prescription_length": 105, "was_edited": false}}
+{"timestamp": "2025-06-07T14:07:24.268253", "doctor": "Dr. Smith", "moment": "ai_summary_missed_clicked", "data": {"complexity": "simple", "emotion": "missed"}}
+{"timestamp": "2025-06-07T14:07:39.180717", "doctor": "Dr. Smith", "moment": "ai_summary_missed", "data": {"complexity": "simple", "emotion": "missed", "details": "Drug interaction is not good related to the summary"}}
+{"timestamp": "2025-06-07T14:35:06.264570", "doctor": "Dr. Smith", "moment": "prescription_accepted", "data": {"prescription_length": 96, "was_edited": false}}
+{"timestamp": "2025-06-07T14:35:16.482638", "doctor": "Dr. Smith", "moment": "ai_summary_good", "data": {"complexity": "simple", "emotion": "helpful"}}
+{"timestamp": "2025-06-07T19:45:24.868915", "doctor": "Dr. Smith", "moment": "prescription_accepted", "data": {"prescription_length": 107, "was_edited": false}}
+{"timestamp": "2025-06-07T19:45:34.219535", "doctor": "Dr. Smith", "moment": "ai_summary_good", "data": {"complexity": "complex", "emotion": "helpful"}}
+{"timestamp": "2025-06-07T19:57:11.607380", "doctor": "Dr. Smith", "moment": "ai_summary_missed_clicked", "data": {"complexity": "simple", "emotion": "missed"}}
+{"timestamp": "2025-06-07T19:57:28.165470", "doctor": "Dr. Smith", "moment": "ai_summary_missed", "data": {"complexity": "simple", "emotion": "missed", "details": "i did not add anything i just said check previous visit "}}
+{"timestamp": "2025-06-07T19:57:37.868403", "doctor": "Dr. Smith", "moment": "prescription_accepted", "data": {"prescription_length": 128, "was_edited": false}}
+{"timestamp": "2025-06-07T20:50:00.164743", "doctor": "Dr. Smith", "moment": "prescription_accepted", "data": {"prescription_length": 100, "was_edited": false}}
+{"timestamp": "2025-06-07T22:17:23.304970", "doctor": "Dr. Smith", "moment": "ai_summary_missed_clicked", "data": {"complexity": "simple", "emotion": "missed"}}
+{"timestamp": "2025-06-07T22:17:26.723458", "doctor": "Dr. Smith", "moment": "prescription_accepted", "data": {"prescription_length": 39, "was_edited": false}}
+{"timestamp": "2025-06-07T22:56:39.930248", "doctor": "Dr. Smith", "moment": "ai_summary_excellent", "data": {"complexity": "simple", "emotion": "excellent"}}
+{"timestamp": "2025-06-08T19:54:15.437022", "doctor": "Dr. Smith", "moment": "ai_summary_good", "data": {"complexity": "simple", "emotion": "helpful"}}
+{"timestamp": "2025-06-08T20:04:58.886607", "doctor": "Dr. Smith", "moment": "prescription_accepted", "data": {"prescription_length": 97, "was_edited": false}}
+{"timestamp": "2025-06-08T22:10:02.436455", "doctor": "Dr. Smith", "moment": "prescription_accepted", "data": {"prescription_length": 91, "was_edited": false}}

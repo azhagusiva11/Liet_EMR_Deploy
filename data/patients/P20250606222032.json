@@ -1,0 +1,166 @@
+{
+  "id": "P20250606222032",
+  "name": "Santhi",
+  "age": 40,
+  "sex": "female",
+  "mobile": "+919171834222",
+  "blood_group": "O+",
+  "address": null,
+  "chronic_conditions": [],
+  "allergies": [],
+  "emergency_contact": null,
+  "registration_date": "2025-06-06T22:20:32.501938",
+  "visits": [
+    {
+      "chief_complaint": "Patient presents with 3-month history of progressive fatigue, unexplained weight loss of 8 kg, and intermittent low-grade fever. Reports morning stiffness lasting >1 hour, particularly in hands and wrists. Describes muscle weakness, especially when climbing stairs. Has noticed a butterfly-shaped rash across her cheeks that worsens with sun exposure. \n\nFamily history significant for autoimmune thyroid disease in mother and rheumatoid arthritis in sister. Patient works as a school teacher, reports recent stress due to workplace changes.\n\nPast medical history: Hypertension controlled with lisinopril 10mg daily. No known drug allergies.\n\nReview of systems: Positive for dry eyes, dry mouth, occasional chest pain, and Raynaud's phenomenon in fingers during cold weather. Denies shortness of breath at rest, but reports mild dyspnea on exertion.\n\nPhysical examination: Alert, oriented patient appearing tired. Malar rash present, no oral ulcers noted. Mild synovitis in PIP and MCP joints bilaterally. Cardiac exam normal, lungs clear. Abdomen soft, no organomegaly.",
+      "visit_type": "opd",
+      "timestamp": "2025-06-06T22:23:14.197362",
+      "doctor": "Dr. A",
+      "format_type": "INDIAN_EMR",
+      "vitals": {
+        "blood_pressure": "145/92",
+        "heart_rate": 88,
+        "temperature": 37.8,
+        "spo2": 96,
+        "weight": 60.0,
+        "height": 162.0,
+        "respiratory_rate": 18
+      },
+      "lab_results": {},
+      "visit_id": "V20250606222314",
+      "vitals_validation": {
+        "status": "abnormal",
+        "alerts": [
+          "High systolic BP: 145 mmHg",
+          "High diastolic BP: 92 mmHg"
+        ],
+        "suggestions": [
+          "Consider antihypertensive evaluation"
+        ],
+        "details": {
+          "blood_pressure": {
+            "status": "abnormal",
+            "alerts": [
+              "High systolic BP: 145 mmHg",
+              "High diastolic BP: 92 mmHg"
+            ],
+            "suggestions": [
+              "Consider antihypertensive evaluation"
+            ],
+            "values": {
+              "systolic": 145,
+              "diastolic": 92
+            }
+          },
+          "heart_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 88
+          },
+          "temperature": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 37.8,
+            "unit": "°C"
+          },
+          "respiratory_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 18
+          },
+          "spo2": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 96
+          }
+        },
+        "severity": "moderate"
+      },
+      "extracted_symptoms": [
+        "dyspnea",
+        "weight loss",
+        "chest pain",
+        "weakness",
+        "shortness of breath",
+        "dyspnea on exertion",
+        "fatigue",
+        "fever",
+        "rash"
+      ],
+      "summary": "CHIEF COMPLAINT:\nFatigue, weight loss, fever, joint stiffness, muscle weakness, butterfly rash\n\nHISTORY OF PRESENT ILLNESS:\n40-year-old female with 3-month history of fatigue, 8 kg weight loss, intermittent fever, morning stiffness in hands/wrists, muscle weakness, butterfly rash worsened by sun exposure. Dry eyes, dry mouth, chest pain, Raynaud's phenomenon. Mild dyspnea on exertion.\n\nCLINICAL EXAMINATION:\nBP: 145/92 mmHg, HR: 88 bpm, Temp: 37.8°C, RR: 18/min, SpO2: 96%, BMI: 22.9 kg/m². Malar rash, mild synovitis in PIP and MCP joints bilaterally.\n\nLABORATORY FINDINGS:\n- ANA: Positive\n- Anti-dsDNA: Elevated\n- ESR: 45 mm/hr\n- CRP: 12 mg/L\n- TSH: Within normal limits\n\nPROVISIONAL DIAGNOSIS:\nSystemic Lupus Erythematosus (SLE) - Based on malar rash, joint symptoms, positive ANA, and elevated anti-dsDNA. Rule out overlap with rheumatoid arthritis due to synovitis.\n\nDIFFERENTIAL DIAGNOSES:\n1. Rheumatoid Arthritis\n2. Sjögren's Syndrome\n3. Hypothyroidism\n\nINVESTIGATIONS ADVISED:\n1. Rheumatoid Factor\n2. Anti-CCP Antibodies\n3. Lipid Profile\n4. Renal Function Tests\n5. Liver Function Tests\n\nPLAN & PRECAUTIONS:\n- Start Hydroxychloroquine 200mg BD x 6 months\n- Educate on sun protection\n- Follow-up in 2 weeks for medication review\n- Return immediately if chest pain, shortness of breath, or worsening joint symptoms",
+      "prescription": "1. Tab. Hydroxychloroquine 200mg - 1 BD x 6 months\n2. Tab. Lisinopril 10mg - 1 OD",
+      "consultation_timestamp": "2025-06-06T22:23:14.211023",
+      "clinician_feedback": [
+        {
+          "timestamp": "2025-06-06T22:27:14.943272",
+          "summary_accuracy": 2,
+          "prescription_appropriate": false,
+          "disease_alert_helpful": false,
+          "overall_rating": 2,
+          "comments": ""
+        }
+      ]
+    }
+  ],
+  "symptom_tracking": {
+    "weight loss": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T22:23:14.197362"
+      }
+    ],
+    "chest pain": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T22:23:14.197362"
+      }
+    ],
+    "weakness": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T22:23:14.197362"
+      }
+    ],
+    "shortness of breath": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T22:23:14.197362"
+      }
+    ],
+    "dyspnea on exertion": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T22:23:14.197362"
+      }
+    ],
+    "fatigue": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T22:23:14.197362"
+      }
+    ],
+    "fever": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T22:23:14.197362"
+      }
+    ],
+    "rash": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T22:23:14.197362"
+      }
+    ],
+    "dyspnea": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T22:23:14.197362"
+      }
+    ]
+  },
+  "admissions": []
+}

@@ -1,0 +1,153 @@
+{
+  "id": "P20250608200206",
+  "name": "Siva",
+  "age": 68,
+  "sex": "male",
+  "mobile": "+919966556691",
+  "blood_group": "A-",
+  "address": null,
+  "chronic_conditions": [],
+  "allergies": [],
+  "emergency_contact": null,
+  "registration_date": "2025-06-08T20:02:06.534370",
+  "visits": [
+    {
+      "chief_complaint": "male presents with sudden onset crushing chest pain radiating to left jaw and arm that started 45 minutes ago while climbing stairs. Patient states he felt dizzy and nearly passed out. He reports taking an extra dose of his blood pressure medication this morning because his home monitor showed high readings. History of AFib on warfarin (missed last 2 doses), hypertension, and type 2 diabetes.",
+      "visit_type": "opd",
+      "timestamp": "2025-06-08T20:04:58.887754",
+      "doctor": "Dr. Smith",
+      "format_type": "SOAP",
+      "vitals": {
+        "blood_pressure": "186/112",
+        "heart_rate": 118,
+        "temperature": 37.8,
+        "spo2": 91,
+        "weight": 102.0,
+        "height": 178.0,
+        "respiratory_rate": 24
+      },
+      "lab_results": {},
+      "visit_id": "V20250608200458",
+      "vitals_validation": {
+        "status": "abnormal",
+        "alerts": [
+          "High systolic BP: 186 mmHg",
+          "High diastolic BP: 112 mmHg",
+          "Tachycardia: 118 bpm",
+          "Tachypnea: 24/min",
+          "Hypoxemia: SpO2 91%"
+        ],
+        "suggestions": [
+          "Consider antihypertensive evaluation",
+          "Evaluate for underlying causes",
+          "Evaluate for respiratory distress",
+          "Consider supplemental oxygen"
+        ],
+        "details": {
+          "blood_pressure": {
+            "status": "abnormal",
+            "alerts": [
+              "High systolic BP: 186 mmHg",
+              "High diastolic BP: 112 mmHg"
+            ],
+            "suggestions": [
+              "Consider antihypertensive evaluation"
+            ],
+            "values": {
+              "systolic": 186,
+              "diastolic": 112
+            }
+          },
+          "heart_rate": {
+            "status": "abnormal",
+            "alerts": [
+              "Tachycardia: 118 bpm"
+            ],
+            "suggestions": [
+              "Evaluate for underlying causes"
+            ],
+            "value": 118
+          },
+          "temperature": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 37.8,
+            "unit": "°C"
+          },
+          "respiratory_rate": {
+            "status": "abnormal",
+            "alerts": [
+              "Tachypnea: 24/min"
+            ],
+            "suggestions": [
+              "Evaluate for respiratory distress"
+            ],
+            "value": 24
+          },
+          "spo2": {
+            "status": "abnormal",
+            "alerts": [
+              "Hypoxemia: SpO2 91%"
+            ],
+            "suggestions": [
+              "Consider supplemental oxygen"
+            ],
+            "value": 91
+          }
+        },
+        "severity": "moderate"
+      },
+      "extracted_symptoms": [
+        "chest pain",
+        "syncope",
+        "feeling dizzy",
+        "dizziness",
+        "confusion",
+        "shortness of breath"
+      ],
+      "summary": "SIVA - SOAP NOTE\n\nSUBJECTIVE:\n- Chief Complaint: Sudden onset crushing chest pain radiating to left jaw and arm.\n- Patient reports feeling dizzy and nearly passing out.\n- Symptoms started 45 minutes ago while climbing stairs.\n\nOBJECTIVE:\n- Vital signs: \n  - Blood Pressure: 186/112 mmHg\n  - Heart Rate: 118 bpm\n  - Temperature: 37.8°C\n  - Respiratory Rate: 24/min\n  - SpO2: 91%\n  - Weight: 102.0 kg\n  - Height: 178.0 cm\n  - BMI: 32.2 kg/m²\n- Physical examination: Patient appears distressed.\n- LAB INTERPRETATION: No lab results available.\n\nASSESSMENT:\n- Clinical Impression: Acute coronary syndrome.\n- Differential Diagnoses: Myocardial infarction, unstable angina, aortic dissection, pulmonary embolism.\n- Concerns: High blood pressure, missed warfarin doses, dizziness, and near syncope.\n- Risk Assessment: High risk due to symptoms and vital signs.\n\nPLAN:\n- Investigations: ECG, cardiac enzymes, chest X-ray.\n- Management: Oxygen therapy, aspirin, nitroglycerin, morphine, IV fluids.\n- Follow up in 24 hours.\n- Red flags: Return immediately if chest pain worsens, shortness of breath, or develops confusion.\n- Safety advice: Avoid strenuous activities.",
+      "prescription": "1. Tab. Aspirin 300 mg - OD x 7 days\n2. Tab. Nitroglycerin 0.4 mg sublingual - SOS for chest pain",
+      "consultation_timestamp": "2025-06-08T20:04:59.020266"
+    }
+  ],
+  "symptom_tracking": {
+    "chest pain": [
+      {
+        "date": "2025-06-08",
+        "visit_date": "2025-06-08T20:04:58.887754"
+      }
+    ],
+    "syncope": [
+      {
+        "date": "2025-06-08",
+        "visit_date": "2025-06-08T20:04:58.887754"
+      }
+    ],
+    "feeling dizzy": [
+      {
+        "date": "2025-06-08",
+        "visit_date": "2025-06-08T20:04:58.887754"
+      }
+    ],
+    "dizziness": [
+      {
+        "date": "2025-06-08",
+        "visit_date": "2025-06-08T20:04:58.887754"
+      }
+    ],
+    "confusion": [
+      {
+        "date": "2025-06-08",
+        "visit_date": "2025-06-08T20:04:58.887754"
+      }
+    ],
+    "shortness of breath": [
+      {
+        "date": "2025-06-08",
+        "visit_date": "2025-06-08T20:04:58.887754"
+      }
+    ]
+  },
+  "admissions": []
+}

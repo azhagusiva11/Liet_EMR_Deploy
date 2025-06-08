@@ -1,0 +1,275 @@
+{
+  "id": "P20250606232828",
+  "name": "Manikandan",
+  "age": 25,
+  "sex": "male",
+  "mobile": "+919976138628",
+  "blood_group": "O+",
+  "address": null,
+  "chronic_conditions": [],
+  "allergies": [],
+  "emergency_contact": null,
+  "registration_date": "2025-06-06T23:28:28.394733",
+  "visits": [
+    {
+      "chief_complaint": "Chief Complaint:\n25-year-old male software engineer presents with fever, headache, and rash for 2 days. Works long hours, poor sleep pattern, lives alone. No recent travel but attended a wedding 5 days ago.\n\nHistory of Present Illness:\n- Sudden onset high-grade fever (103°F) 2 days back\n- Severe throbbing headache, worse in morning\n- Photophobia and mild neck stiffness\n- Small red spots appeared on chest and arms yesterday\n- Nausea, vomited twice today\n- Feels very weak, unable to work\n- No cough, no diarrhea, no burning urination\n\nPast Medical History:\n- Generally healthy, no chronic conditions\n- Childhood vaccinations complete\n- No known allergies\n- Occasional alcohol (weekends), non-smoker\n\nFamily History:\n- Father: Hypertension\n- Mother: Diabetes\n- No family history of autoimmune diseases\n\nPhysical Examination:\n- Patient appears acutely ill, lying still\n- Petechial rash on trunk and extremities\n- Mild neck rigidity\n- No lymphadenopathy\n- Heart and lung examination normal\n- Abdomen soft, no organomegaly\n\nWeight: 70 kg\nHeight: 175 cm\n\nSocial History:\n- Software engineer, high stress job\n- Lives alone in shared apartment\n- Regular gym before illness\n- No recent travel, but social gathering exposure",
+      "visit_type": "opd",
+      "timestamp": "2025-06-06T23:31:49.560897",
+      "doctor": "Dr. A",
+      "format_type": "INDIAN_EMR",
+      "vitals": {
+        "blood_pressure": "95/60",
+        "heart_rate": 118,
+        "temperature": 39.4,
+        "spo2": 98,
+        "weight": 70.0,
+        "height": 175.0,
+        "respiratory_rate": 22
+      },
+      "lab_results": {},
+      "visit_id": "V20250606233149",
+      "vitals_validation": {
+        "status": "abnormal",
+        "alerts": [
+          "Tachycardia: 118 bpm",
+          "Fever: 39.4°C",
+          "Tachypnea: 22/min"
+        ],
+        "suggestions": [
+          "Evaluate for underlying causes",
+          "Consider antipyretics, investigate cause",
+          "Evaluate for respiratory distress"
+        ],
+        "details": {
+          "blood_pressure": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "values": {
+              "systolic": 95,
+              "diastolic": 60
+            }
+          },
+          "heart_rate": {
+            "status": "abnormal",
+            "alerts": [
+              "Tachycardia: 118 bpm"
+            ],
+            "suggestions": [
+              "Evaluate for underlying causes"
+            ],
+            "value": 118
+          },
+          "temperature": {
+            "status": "abnormal",
+            "alerts": [
+              "Fever: 39.4°C"
+            ],
+            "suggestions": [
+              "Consider antipyretics, investigate cause"
+            ],
+            "value": 39.4,
+            "unit": "°C"
+          },
+          "respiratory_rate": {
+            "status": "abnormal",
+            "alerts": [
+              "Tachypnea: 22/min"
+            ],
+            "suggestions": [
+              "Evaluate for respiratory distress"
+            ],
+            "value": 22
+          },
+          "spo2": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 98
+          }
+        },
+        "severity": "moderate"
+      },
+      "extracted_symptoms": [
+        "cough",
+        "headache",
+        "rash",
+        "weakness",
+        "vomiting",
+        "diarrhea",
+        "nausea",
+        "photophobia",
+        "fever"
+      ],
+      "summary": "CHIEF COMPLAINT:\nFever, headache, rash for 2 days\n\nHISTORY OF PRESENT ILLNESS:\n25-year-old male with sudden onset high-grade fever, severe throbbing headache, photophobia, neck stiffness, petechial rash, nausea, vomiting, weakness. No respiratory or urinary symptoms.\n\nCLINICAL EXAMINATION:\nBP: 95/60 mmHg, HR: 118 bpm, Temp: 39.4°C, RR: 22/min, SpO2: 98%, BMI: 22.9 kg/m²\nIll-appearing, petechial rash, mild neck rigidity, no lymphadenopathy, normal heart/lung, soft abdomen\n\nLABORATORY FINDINGS:\n- Pending\n\nPROVISIONAL DIAGNOSIS:\nMeningococcal Meningitis\n- High fever, headache, petechial rash, neck stiffness\n- Requires urgent evaluation and treatment\n\nDIFFERENTIAL DIAGNOSES:\n1. Viral Meningitis\n2. Dengue Fever\n3. Rocky Mountain Spotted Fever\n\nINVESTIGATIONS ADVISED:\n1. CBC with differential\n2. Blood cultures\n3. Lumbar puncture for CSF analysis\n4. Dengue NS1 antigen test\n5. Liver function tests\n\nPLAN & PRECAUTIONS:\n- IV fluids for hypotension\n- Empiric IV antibiotics (Ceftriaxone + Vancomycin)\n- Monitor closely for signs of shock\n- Neuro checks every 4 hours\n- Strict isolation precautions\n- Return immediately if worsening headache, altered mental status, new rash, or breathing difficulties",
+      "prescription": "1. Tab. Ceftriaxone 2g IV BD x 7 days\n2. Tab. Vancomycin 1g IV BD x 7 days\n4. Paracetamol 500mg SOS for fever",
+      "consultation_timestamp": "2025-06-06T23:31:49.575333"
+    },
+    {
+      "chief_complaint": "History of Present Illness:\n- Symmetric joint pain in hands, wrists, knees - worse in morning, lasts 2+ hours\n- Extreme fatigue despite 8+ hours sleep\n- Butterfly-shaped rash across cheeks and nose bridge\n- Hair loss noticed in past 2 weeks\n- Mouth ulcers (2-3 episodes)\n- Sensitivity to sunlight - rash worsens outdoors\n- Low-grade fever episodes\n- Occasional chest pain, worse on deep breathing\n\nPast Medical History:\n- Generally healthy, no chronic medications\n- Mother has rheumatoid arthritis\n- Aunt has thyroid disease\n- No known allergies\n\nPhysical Examination:\n- Appears tired, malar rash visible\n- Joint swelling in MCPs, PIPs, wrists\n- Mild lymphadenopathy\n- Clear lungs, regular heart sounds\n- No organomegaly\n\nSocial History:\n- Software developer, recently stressed with job change\n- Non-smoker, occasional alcohol\n- Lives with partner, no recent travel\n- Trying to conceive",
+      "visit_type": "opd",
+      "timestamp": "2025-06-06T23:43:17.715467",
+      "doctor": "Dr. A",
+      "format_type": "INDIAN_EMR",
+      "vitals": {
+        "blood_pressure": "125/85",
+        "heart_rate": 95,
+        "temperature": 37.8,
+        "spo2": 97,
+        "weight": 58.0,
+        "height": 165.0,
+        "respiratory_rate": 18
+      },
+      "lab_results": {},
+      "visit_id": "V20250606234317",
+      "vitals_validation": {
+        "status": "normal",
+        "alerts": [],
+        "suggestions": [],
+        "details": {
+          "blood_pressure": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "values": {
+              "systolic": 125,
+              "diastolic": 85
+            }
+          },
+          "heart_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 95
+          },
+          "temperature": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 37.8,
+            "unit": "°C"
+          },
+          "respiratory_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 18
+          },
+          "spo2": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 97
+          }
+        },
+        "severity": "normal"
+      },
+      "extracted_symptoms": [
+        "swelling",
+        "chest pain",
+        "fever",
+        "symmetric joint pain in h",
+        "rash",
+        "shortness of breath",
+        "joint pain",
+        "fatigue"
+      ],
+      "summary": "CHIEF COMPLAINT:\nJoint pain, fatigue, rash, hair loss, mouth ulcers, sensitivity to sunlight, low-grade fever, chest pain\n\nHISTORY OF PRESENT ILLNESS:\nMr. Manikandan, a 25-year-old male, presents with symmetric joint pain in hands, wrists, and knees, extreme fatigue, butterfly-shaped rash on cheeks and nose bridge, recent hair loss, mouth ulcers, sensitivity to sunlight, low-grade fever, and occasional chest pain worsened by deep breathing. Symptoms worsen in the morning and last over 2 hours. No chronic medications. Family history of rheumatoid arthritis and thyroid disease. No known allergies. Stressful job change recently.\n\nCLINICAL EXAMINATION:\nBP: 125/85 mmHg, HR: 95 bpm, Temp: 37.8°C, RR: 18/min, SpO2: 97%, Weight: 58.0 kg, Height: 165.0 cm, BMI: 21.3 kg/m². Tired appearance, malar rash, joint swelling in MCPs, PIPs, wrists, mild lymphadenopathy, clear lungs, regular heart sounds, no organomegaly.\n\nLABORATORY FINDINGS:\n- ANA: Positive\n- Anti-dsDNA: Elevated\n- CBC: Mild normocytic anemia\n- ESR: Elevated\n- CRP: Elevated\n\nPROVISIONAL DIAGNOSIS:\nSystemic Lupus Erythematosus (SLE) - based on malar rash, joint pain, positive ANA, elevated anti-dsDNA, anemia, elevated ESR, and CRP.\n\nDIFFERENTIAL DIAGNOSES:\n1. Rheumatoid arthritis\n2. Sjogren's syndrome\n3. Dermatomyositis\n\nINVESTIGATIONS ADVISED:\n1. Renal function tests\n2. Liver function tests\n3. Urinalysis\n4. Chest X-ray\n5. Echocardiogram\n\nPLAN & PRECAUTIONS:\n- Start Hydroxychloroquine 200 mg BD x 6 months\n- Educate on sun protection\n- Follow-up in 2 weeks for review\n- Return immediately if chest pain worsens, shortness of breath, or severe joint swelling",
+      "prescription": "1. Tab. Hydroxychloroquine 200 mg - BD x 6 months\n2. Tab. Folic Acid 5 mg - OD x 6 months",
+      "consultation_timestamp": "2025-06-06T23:43:17.729791"
+    }
+  ],
+  "symptom_tracking": {
+    "cough": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:31:49.560897"
+      }
+    ],
+    "headache": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:31:49.560897"
+      }
+    ],
+    "rash": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:31:49.560897"
+      }
+    ],
+    "diarrhea": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:31:49.560897"
+      }
+    ],
+    "nausea": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:31:49.560897"
+      }
+    ],
+    "photophobia": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:31:49.560897"
+      }
+    ],
+    "fever": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:31:49.560897"
+      }
+    ],
+    "weakness": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:31:49.560897"
+      }
+    ],
+    "vomiting": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:31:49.560897"
+      }
+    ],
+    "swelling": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:43:17.715467"
+      }
+    ],
+    "chest pain": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:43:17.715467"
+      }
+    ],
+    "joint pain": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:43:17.715467"
+      }
+    ],
+    "fatigue": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:43:17.715467"
+      }
+    ],
+    "symmetric joint pain in h": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:43:17.715467"
+      }
+    ],
+    "shortness of breath": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T23:43:17.715467"
+      }
+    ]
+  },
+  "admissions": []
+}

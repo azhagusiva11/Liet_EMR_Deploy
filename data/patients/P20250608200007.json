@@ -1,0 +1,94 @@
+{
+  "id": "P20250608200007",
+  "name": "Siva",
+  "age": 30,
+  "sex": "male",
+  "mobile": "+919966556699",
+  "blood_group": null,
+  "address": null,
+  "chronic_conditions": [],
+  "allergies": [],
+  "emergency_contact": null,
+  "registration_date": "2025-06-08T20:00:07.207388",
+  "visits": [
+    {
+      "chief_complaint": "Feeling weak for 2 days, bit of nausea, slept badly",
+      "visit_type": "opd",
+      "timestamp": "2025-06-08T22:10:02.437904",
+      "doctor": "Dr. Smith",
+      "format_type": "SOAP",
+      "vitals": {
+        "blood_pressure": "118/76",
+        "heart_rate": 98,
+        "temperature": 37.9,
+        "spo2": 93,
+        "weight": 70.0,
+        "height": 170.0,
+        "respiratory_rate": 18
+      },
+      "lab_results": {},
+      "visit_id": "V20250608221002",
+      "vitals_validation": {
+        "status": "abnormal",
+        "alerts": [
+          "Fever: 37.9°C",
+          "Hypoxemia: SpO2 93%"
+        ],
+        "suggestions": [
+          "Consider antipyretics, investigate cause",
+          "Consider supplemental oxygen"
+        ],
+        "details": {
+          "blood_pressure": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "values": {
+              "systolic": 118,
+              "diastolic": 76
+            }
+          },
+          "heart_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 98
+          },
+          "temperature": {
+            "status": "abnormal",
+            "alerts": [
+              "Fever: 37.9°C"
+            ],
+            "suggestions": [
+              "Consider antipyretics, investigate cause"
+            ],
+            "value": 37.9,
+            "unit": "°C"
+          },
+          "respiratory_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 18
+          },
+          "spo2": {
+            "status": "abnormal",
+            "alerts": [
+              "Hypoxemia: SpO2 93%"
+            ],
+            "suggestions": [
+              "Consider supplemental oxygen"
+            ],
+            "value": 93
+          }
+        },
+        "severity": "moderate"
+      },
+      "summary": "SIVA - 30 years, Male\n\nSUBJECTIVE:\n- Chief Complaint: Feeling weak for 2 days, bit of nausea, slept badly\n- Patient reports symptoms exactly as stated\n\nOBJECTIVE:\n- Vital signs: BP 118/76 mmHg, HR 98 bpm, Temp 37.9°C, RR 18/min, SpO2 93%\n- Physical examination: Patient appears fatigued\n- LAB INTERPRETATION: No lab results available\n\nASSESSMENT:\n- Clinical Impression: Acute onset weakness, nausea, and poor sleep\n- Differential Diagnoses: 1. Viral illness 2. Gastroenteritis 3. Sleep disturbance\n- Concerns: Low SpO2 level, possible underlying infection\n- Risk Assessment: Moderate risk due to low SpO2 and symptoms\n\nPLAN:\n- Investigations: CBC, CRP, COVID-19 test\n- Management: Symptomatic treatment, encourage hydration and rest\n- Follow up in 3 days\n- Red flags: Return immediately if SpO2 drops below 90%, persistent vomiting, confusion, chest pain\n- Safety advice: Maintain good hydration, rest adequately",
+      "prescription": "1. Tab. Paracetamol 500mg - 1 tab PRN for fever\n2. Syrup Ondansetron 4mg - 5ml TDS x 3 days",
+      "consultation_timestamp": "2025-06-08T22:10:02.446545"
+    }
+  ],
+  "symptom_tracking": {},
+  "admissions": []
+}

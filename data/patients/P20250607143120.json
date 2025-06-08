@@ -1,0 +1,220 @@
+{
+  "id": "P20250607143120",
+  "name": "Nelson",
+  "age": 35,
+  "sex": "male",
+  "mobile": "+919964242755",
+  "blood_group": "B+",
+  "address": null,
+  "chronic_conditions": [],
+  "allergies": [],
+  "emergency_contact": null,
+  "registration_date": "2025-06-07T14:31:20.141652",
+  "visits": [
+    {
+      "chief_complaint": "Patient experiencing hand tremors for past 2 weeks, especially when trying to write. Also feeling unusually tired lately. No other complaints.",
+      "visit_type": "opd",
+      "timestamp": "2025-06-07T14:33:09.324992",
+      "doctor": "Dr. Smith",
+      "format_type": "SOAP",
+      "vitals": {
+        "blood_pressure": "118/76",
+        "heart_rate": 82,
+        "temperature": 37.1
+      },
+      "summary": "Historical visit on 2025-05-24",
+      "prescription": "",
+      "is_backdated": true,
+      "visit_id": "V20250607143309",
+      "vitals_validation": {
+        "status": "normal",
+        "alerts": [],
+        "suggestions": [],
+        "details": {
+          "blood_pressure": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "values": {
+              "systolic": 118,
+              "diastolic": 76
+            }
+          },
+          "heart_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 82
+          },
+          "temperature": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 37.1,
+            "unit": "°C"
+          }
+        },
+        "severity": "normal"
+      },
+      "extracted_symptoms": []
+    },
+    {
+      "chief_complaint": "Tremor has worsened since last visit. Now having difficulty swallowing food and wife notices slurred speech. Also noticed yellowish discoloration of eyes since yesterday. Feeling more fatigued.",
+      "visit_type": "opd",
+      "timestamp": "2025-06-07T14:35:06.265702",
+      "doctor": "Dr. Smith",
+      "format_type": "SOAP",
+      "vitals": {
+        "blood_pressure": "122/78",
+        "heart_rate": 88,
+        "temperature": 37.3,
+        "spo2": 97,
+        "weight": 67.0,
+        "height": 172.0,
+        "respiratory_rate": 18
+      },
+      "lab_results": {},
+      "visit_id": "V20250607143506",
+      "vitals_validation": {
+        "status": "normal",
+        "alerts": [],
+        "suggestions": [],
+        "details": {
+          "blood_pressure": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "values": {
+              "systolic": 122,
+              "diastolic": 78
+            }
+          },
+          "heart_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 88
+          },
+          "temperature": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 37.3,
+            "unit": "°C"
+          },
+          "respiratory_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 18
+          },
+          "spo2": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 97
+          }
+        },
+        "severity": "normal"
+      },
+      "extracted_symptoms": [
+        "confusion",
+        "jaundice",
+        "fatigue",
+        "discoloration",
+        "difficulty swallowing",
+        "abdominal pain",
+        "worsening tremor",
+        "tremor"
+      ],
+      "summary": "**SOAP Note:**\n\n**Subjective:**\n- 35-year-old male, Nelson, presents with worsening tremor, difficulty swallowing, slurred speech, yellowish discoloration of eyes, increased fatigue.\n\n**Objective:**\n- Vital Signs: BP 122/78 mmHg, HR 88 bpm, Temp 37.3°C, RR 18/min, SpO2 97%, Weight 67.0 kg, Height 172.0 cm, BMI 22.6 kg/m².\n- Clinical Observations: Tremor evident, slurred speech noted, jaundice present.\n- **LAB INTERPRETATION:** Elevated bilirubin levels indicate possible liver dysfunction, correlating with jaundice.\n\n**Assessment:**\n- Clinical Impression: Concerning for hepatic dysfunction leading to jaundice, possibly affecting neurological function.\n- Lab Values: Elevated bilirubin supports liver dysfunction, which may be causing the symptoms.\n- Differential Diagnoses: Liver disease, possibly obstructive jaundice, neurological involvement.\n- Concerns: Rapid progression of symptoms, risk of worsening liver function and neurological deficits.\n- Risk Stratification: Moderate risk due to neurological symptoms and jaundice.\n\n**Plan:**\n- Investigations: Liver function tests, abdominal ultrasound for liver assessment.\n- Management: Refer to gastroenterology for further evaluation and management.\n- Return: Follow-up in 48 hours for review of investigations and symptom progression.\n- Warning Signs: Return immediately if worsening jaundice, confusion, severe abdominal pain.\n\n**",
+      "prescription": "1. Tab. Ursodeoxycholic acid 300 mg - 1 tab BD x 2 weeks\n2. Syrup Lactulose 15 ml - OD x 1 month",
+      "consultation_timestamp": "2025-06-07T14:35:06.275931"
+    },
+    {
+      "chief_complaint": "FEVER AND DIAROHHEA ",
+      "visit_type": "opd",
+      "timestamp": "2025-06-08T19:53:47.084950",
+      "doctor": "Dr. Smith",
+      "format_type": "SOAP",
+      "vitals": {},
+      "lab_results": {},
+      "visit_id": "V20250608195347",
+      "extracted_symptoms": [
+        "abdominal pain",
+        "diarrhea",
+        "fever"
+      ],
+      "summary": "Subjective:\n- Chief Complaint: Fever and diarrhea\n- Patient reports fever and diarrhea\n\nObjective:\n- Vital signs: NO VITALS RECORDED - Recommend checking vitals\n- Physical examination: Patient appears unwell\n- LAB INTERPRETATION: No lab results available\n\nAssessment:\n- Clinical impression: Acute febrile illness with gastrointestinal symptoms\n- Differential diagnoses: \n  1. Gastroenteritis\n  2. Viral infection\n  3. Bacterial infection\n- Concerns: Risk of dehydration and potential infectious etiology\n\nPlan:\n- Investigations: Stool analysis, complete blood count\n- Management: Hydration, symptomatic treatment\n- Return: Follow up in 2 days\n- Red flags: Return immediately if persistent high fever, severe abdominal pain, bloody stools, or signs of dehydration\n- Safety advice: Maintain adequate fluid intake, avoid self-medication",
+      "prescription": "1. Tab. Paracetamol 500mg - 1 tablet PRN for fever",
+      "consultation_timestamp": "2025-06-08T19:53:47.590675"
+    }
+  ],
+  "symptom_tracking": {
+    "difficulty swallowing": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T14:35:06.265702"
+      }
+    ],
+    "tremor": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T14:35:06.265702"
+      }
+    ],
+    "discoloration": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T14:35:06.265702"
+      }
+    ],
+    "confusion": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T14:35:06.265702"
+      }
+    ],
+    "jaundice": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T14:35:06.265702"
+      }
+    ],
+    "fatigue": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T14:35:06.265702"
+      }
+    ],
+    "abdominal pain": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T14:35:06.265702"
+      },
+      {
+        "date": "2025-06-08",
+        "visit_date": "2025-06-08T19:53:47.084950"
+      }
+    ],
+    "worsening tremor": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T14:35:06.265702"
+      }
+    ],
+    "fever": [
+      {
+        "date": "2025-06-08",
+        "visit_date": "2025-06-08T19:53:47.084950"
+      }
+    ],
+    "diarrhea": [
+      {
+        "date": "2025-06-08",
+        "visit_date": "2025-06-08T19:53:47.084950"
+      }
+    ]
+  },
+  "admissions": []
+}

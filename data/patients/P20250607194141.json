@@ -1,0 +1,228 @@
+{
+  "id": "P20250607194141",
+  "name": "Raj Kumar",
+  "age": 28,
+  "sex": "male",
+  "mobile": "+919999999999",
+  "blood_group": null,
+  "address": null,
+  "chronic_conditions": [],
+  "allergies": [],
+  "emergency_contact": null,
+  "registration_date": "2025-06-07T19:41:41.176015",
+  "visits": [
+    {
+      "chief_complaint": "Patient complaining of difficulty swallowing food since last week. \nSays food gets stuck in throat. Also noticed hands shaking while writing.",
+      "visit_type": "opd",
+      "timestamp": "2025-06-07T19:43:20.362849",
+      "doctor": "Dr. Smith",
+      "format_type": "SOAP",
+      "vitals": {
+        "blood_pressure": "130/85",
+        "heart_rate": 90,
+        "temperature": 37.3
+      },
+      "summary": "Historical visit on 2025-05-17",
+      "prescription": "",
+      "is_backdated": true,
+      "visit_id": "V20250607194320",
+      "vitals_validation": {
+        "status": "normal",
+        "alerts": [],
+        "suggestions": [],
+        "details": {
+          "blood_pressure": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "values": {
+              "systolic": 130,
+              "diastolic": 85
+            }
+          },
+          "heart_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 90
+          },
+          "temperature": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 37.3,
+            "unit": "°C"
+          }
+        },
+        "severity": "normal"
+      },
+      "extracted_symptoms": [
+        "difficulty swallowing"
+      ],
+      "disease_detection_error": "DiseaseDetectionEngine.detect_rare_diseases() got an unexpected keyword argument 'raw_text'"
+    },
+    {
+      "chief_complaint": "Shaking has become worse. Now trembling even at rest. \nStill having trouble swallowing, especially solid foods.\nWife noticed yellowish color in eyes yesterday.\nPatient also mentions feeling very tired all the time.",
+      "visit_type": "opd",
+      "timestamp": "2025-06-07T19:45:24.870334",
+      "doctor": "Dr. Smith",
+      "format_type": "INDIAN_EMR",
+      "vitals": {
+        "blood_pressure": "135/88",
+        "heart_rate": 82,
+        "temperature": 37.5,
+        "spo2": 98,
+        "weight": 65.0,
+        "height": 160.0,
+        "respiratory_rate": 22
+      },
+      "lab_results": {},
+      "visit_id": "V20250607194524",
+      "vitals_validation": {
+        "status": "abnormal",
+        "alerts": [
+          "Tachypnea: 22/min"
+        ],
+        "suggestions": [
+          "Evaluate for respiratory distress"
+        ],
+        "details": {
+          "blood_pressure": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "values": {
+              "systolic": 135,
+              "diastolic": 88
+            }
+          },
+          "heart_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 82
+          },
+          "temperature": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 37.5,
+            "unit": "°C"
+          },
+          "respiratory_rate": {
+            "status": "abnormal",
+            "alerts": [
+              "Tachypnea: 22/min"
+            ],
+            "suggestions": [
+              "Evaluate for respiratory distress"
+            ],
+            "value": 22
+          },
+          "spo2": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 98
+          }
+        },
+        "severity": "moderate"
+      },
+      "extracted_symptoms": [
+        "weakness",
+        "worsening tremors",
+        "discoloration",
+        "difficulty swallowing",
+        "fatigue",
+        "jaundice"
+      ],
+      "disease_detection_error": "DiseaseDetectionEngine.detect_rare_diseases() got an unexpected keyword argument 'raw_text'",
+      "summary": "CHIEF COMPLAINT:\nTremors, difficulty swallowing, yellowish eyes, fatigue\n\nHISTORY OF PRESENT ILLNESS:\nMr. Raj Kumar, a 28-year-old male, presents with worsening tremors, especially at rest, ongoing difficulty swallowing solid foods, noted yellowish discoloration of eyes by wife, and persistent fatigue.\n\nCLINICAL EXAMINATION:\nBP: 135/88 mmHg, HR: 82 bpm, Temp: 37.5°C, RR: 22/min, SpO2: 98%\nBMI: 25.4 kg/m² (Overweight)\n\nLABORATORY FINDINGS:\n- Pending\n\nPROVISIONAL DIAGNOSIS:\n1. Possible neurological disorder affecting motor control and swallowing function.\n- Concern for liver dysfunction based on yellowish eyes and fatigue.\n\nDIFFERENTIAL DIAGNOSES:\n1. Essential Tremor\n2. Parkinson's Disease\n3. Wilson's Disease\n4. Hepatitis\n\nINVESTIGATIONS ADVISED:\n1. Liver function tests\n2. Thyroid function tests\n3. Neurological examination\n4. Abdominal ultrasound\n\nPLAN & PRECAUTIONS:\n- Refer to Neurology for tremors and swallowing difficulty.\n- Advise dietary modifications for swallowing issues.\n- Educate on liver-friendly diet and lifestyle changes.\n- Return immediately if jaundice worsens, difficulty breathing, or severe weakness.",
+      "prescription": "1. Tab. Propranolol 20 mg - 1 tablet BD x 2 weeks\n2. Syrup Ursodeoxycholic acid 300 mg - 10 ml OD x 4 weeks",
+      "consultation_timestamp": "2025-06-07T19:45:24.881749"
+    },
+    {
+      "chief_complaint": "Check previous visits ",
+      "visit_type": "opd",
+      "timestamp": "2025-06-07T19:57:37.869855",
+      "doctor": "Dr. Smith",
+      "format_type": "SOAP",
+      "vitals": {},
+      "lab_results": {},
+      "visit_id": "V20250607195737",
+      "extracted_symptoms": [
+        "sharp",
+        "fever",
+        "vomiting",
+        "abdominal pain"
+      ],
+      "disease_detection_error": "DiseaseDetectionEngine.detect_rare_diseases() got an unexpected keyword argument 'raw_text'",
+      "summary": "**SOAP Note:**\n\n**Subjective:**\n- Chief complaint: Patient with a history of recurrent abdominal pain.\n- HPI: Raj Kumar, a 28-year-old male, presents with sharp, intermittent abdominal pain in the right lower quadrant for the past 24 hours. He rates the pain as 7/10, exacerbated by movement, and denies any associated symptoms.\n\n**Objective:**\n- Vital signs: Not recorded - recommend checking vitals.\n- Clinical observations: Patient appears uncomfortable, guarding right lower quadrant. No signs of peritonitis. Weight and height not provided.\n- LAB INTERPRETATION: No lab results provided.\n\n**Assessment:**\n- Clinical impression: Likely acute appendicitis based on history and physical exam findings.\n- Differential diagnoses: Consider gastroenteritis, urinary tract infection, ovarian cyst, or mesenteric adenitis.\n- Concerns: Worried about potential progression to perforation if not promptly diagnosed and managed.\n- Risk stratification: High suspicion for appendicitis, urgent evaluation needed.\n\n**Plan:**\n- Investigations: Order CBC, CRP, and abdominal ultrasound.\n- Management: NPO, IV fluids, analgesia, surgical consult for possible appendectomy.\n- Return in 24 hours for reassessment.\n- Warning signs: Return immediately if fever, worsening pain, vomiting, or rebound tenderness develop.\n\n**",
+      "prescription": "1. Tab. Acetaminophen 500mg - 1 tab PO q6h PRN pain x 3 days\n2. Tab. Ondansetron 4mg - 1 tab PO q8h PRN nausea/vomiting x 3 days",
+      "consultation_timestamp": "2025-06-07T19:57:37.883298"
+    }
+  ],
+  "symptom_tracking": {
+    "difficulty swallowing": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T19:43:20.362849"
+      }
+    ],
+    "weakness": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T19:45:24.870334"
+      }
+    ],
+    "worsening tremors": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T19:45:24.870334"
+      }
+    ],
+    "discoloration": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T19:45:24.870334"
+      }
+    ],
+    "fatigue": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T19:45:24.870334"
+      }
+    ],
+    "jaundice": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T19:45:24.870334"
+      }
+    ],
+    "sharp": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T19:57:37.869855"
+      }
+    ],
+    "fever": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T19:57:37.869855"
+      }
+    ],
+    "vomiting": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T19:57:37.869855"
+      }
+    ],
+    "abdominal pain": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T19:57:37.869855"
+      }
+    ]
+  },
+  "admissions": []
+}

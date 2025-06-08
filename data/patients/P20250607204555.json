@@ -1,0 +1,179 @@
+{
+  "id": "P20250607204555",
+  "name": "Priya Sharma",
+  "age": 25,
+  "sex": "female",
+  "mobile": "+918888855555",
+  "blood_group": "B+",
+  "address": null,
+  "chronic_conditions": [],
+  "allergies": [],
+  "emergency_contact": null,
+  "registration_date": "2025-06-07T20:45:55.704941",
+  "visits": [
+    {
+      "chief_complaint": "hand trembling when holding cup\ncant swallow food properly\nfeeling very tired",
+      "visit_type": "opd",
+      "timestamp": "2025-06-07T20:47:44.889087",
+      "doctor": "Dr. Smith",
+      "format_type": "SOAP",
+      "vitals": {
+        "blood_pressure": "120/80",
+        "heart_rate": 72,
+        "temperature": 37.0
+      },
+      "summary": "Historical visit on 2025-05-17",
+      "prescription": "",
+      "is_backdated": true,
+      "visit_id": "V20250607204744",
+      "vitals_validation": {
+        "status": "normal",
+        "alerts": [],
+        "suggestions": [],
+        "details": {
+          "blood_pressure": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "values": {
+              "systolic": 120,
+              "diastolic": 80
+            }
+          },
+          "heart_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 72
+          },
+          "temperature": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 37.0,
+            "unit": "°C"
+          }
+        },
+        "severity": "normal"
+      },
+      "extracted_symptoms": []
+    },
+    {
+      "chief_complaint": "shaking got worse\nyellow color in eyes since 3 days\ndifficulty swallowing even water now\nstomach pain also started",
+      "visit_type": "opd",
+      "timestamp": "2025-06-07T20:50:00.166224",
+      "doctor": "Dr. Smith",
+      "format_type": "INDIAN_EMR",
+      "vitals": {
+        "blood_pressure": "130/85",
+        "heart_rate": 88,
+        "temperature": 37.8,
+        "spo2": 97,
+        "weight": 50.0,
+        "height": 160.0,
+        "respiratory_rate": 20
+      },
+      "lab_results": {},
+      "visit_id": "V20250607205000",
+      "vitals_validation": {
+        "status": "normal",
+        "alerts": [],
+        "suggestions": [],
+        "details": {
+          "blood_pressure": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "values": {
+              "systolic": 130,
+              "diastolic": 85
+            }
+          },
+          "heart_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 88
+          },
+          "temperature": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 37.8,
+            "unit": "°C"
+          },
+          "respiratory_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 20
+          },
+          "spo2": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 97
+          }
+        },
+        "severity": "normal"
+      },
+      "extracted_symptoms": [
+        "pain",
+        "worsening shaking",
+        "abdominal pain",
+        "confusion",
+        "nausea",
+        "difficulty swallowing",
+        "jaundice"
+      ],
+      "summary": "CHIEF COMPLAINT:\nShaking worsening, yellow eyes for 3 days, difficulty swallowing, stomach pain\n\nHISTORY OF PRESENT ILLNESS:\nMs. Priya Sharma, 25-year-old female, presents with worsening shaking, yellow eyes for 3 days, difficulty swallowing, and recent onset stomach pain. Symptoms progressing rapidly, impacting daily activities.\n\nCLINICAL EXAMINATION:\nBP: 130/85 mmHg, HR: 88 bpm, Temp: 37.8°C, RR: 20/min, SpO2: 97%\nBMI: 19.5 kg/m² (Normal range)\n\nLABORATORY FINDINGS:\n- Liver Function Tests:\n  - Total Bilirubin: 3.2 mg/dL (elevated)\n  - AST: 120 U/L (elevated)\n  - ALT: 140 U/L (elevated)\n  - Alkaline Phosphatase: 180 U/L (elevated)\n- CBC: Within normal limits\n- Lipase: Within normal limits\n\nPROVISIONAL DIAGNOSIS:\nAcute viral hepatitis likely due to elevated liver enzymes and jaundice. Urgent evaluation for complications needed.\n\nDIFFERENTIAL DIAGNOSES:\n1. Acute viral hepatitis\n2. Acute cholecystitis\n3. Pancreatitis\n\nINVESTIGATIONS ADVISED:\n1. Hepatitis A, B, C serology\n2. Abdominal ultrasound\n3. Coagulation profile\n\nPLAN & PRECAUTIONS:\n1. Refer to gastroenterology for further evaluation and management\n2. Symptomatic treatment for pain and nausea\n3. Strict monitoring for signs of liver failure\n4. Return immediately if worsening abdominal pain, confusion, or bleeding",
+      "prescription": "1. Tab. Paracetamol 500 mg - 1 tablet SOS for pain\n2. Tab. Ondansetron 4 mg - 1 tablet BD for nausea",
+      "consultation_timestamp": "2025-06-07T20:50:00.214688"
+    }
+  ],
+  "symptom_tracking": {
+    "pain": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T20:50:00.166224"
+      }
+    ],
+    "difficulty swallowing": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T20:50:00.166224"
+      }
+    ],
+    "worsening shaking": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T20:50:00.166224"
+      }
+    ],
+    "abdominal pain": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T20:50:00.166224"
+      }
+    ],
+    "confusion": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T20:50:00.166224"
+      }
+    ],
+    "nausea": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T20:50:00.166224"
+      }
+    ],
+    "jaundice": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T20:50:00.166224"
+      }
+    ]
+  },
+  "admissions": []
+}

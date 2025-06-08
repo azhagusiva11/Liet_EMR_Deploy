@@ -1,0 +1,111 @@
+D:.
+│   .env
+│   app.py
+│   Project_Structure.txt
+│   requirements.txt
+│
+├───api
+│   │   analytics_routes.py
+│   │   patient_routes.py
+│   │   visit_routes.py
+│   │   __init__.py
+│   │
+│   └───__pycache__
+│           analytics_routes.cpython-313.pyc
+│           patient_routes.cpython-313.pyc
+│           visit_routes.cpython-313.pyc
+│           __init__.cpython-313.pyc
+│
+├───core
+│   │   __init__.py
+│   │
+│   ├───ai
+│   │   │   gpt_engine.py
+│   │   │   __init__.py
+│   │   │
+│   │   └───__pycache__
+│   │           gpt_engine.cpython-313.pyc
+│   │           __init__.cpython-313.pyc
+│   │
+│   ├───clinical
+│   │   │   vitals_validator.py
+│   │   │   __init__.py
+│   │   │
+│   │   └───__pycache__
+│   │           vitals_validator.cpython-313.pyc
+│   │           __init__.cpython-313.pyc
+│   │
+│   ├───patients
+│   │   │   patient_manager.py
+│   │   │   patient_model.py
+│   │   │   __init__.py
+│   │   │
+│   │   └───__pycache__
+│   │           patient_manager.cpython-313.pyc
+│   │           patient_model.cpython-313.pyc
+│   │           __init__.cpython-313.pyc
+│   │
+│   ├───visits
+│   │   │   visit_manager.py
+│   │   │   __init__.py
+│   │   │
+│   │   └───__pycache__
+│   │           visit_manager.cpython-313.pyc
+│   │           __init__.cpython-313.pyc
+│   │
+│   └───__pycache__
+│           __init__.cpython-313.pyc
+│
+├───data
+│   ├───analytics
+│   ├───config
+│   │       indian_drugs.json
+│   │       physiological_ranges.json
+│   │
+│   ├───db
+│   │   │   json_adapter.py
+│   │   │   __init__.py
+│   │   │
+│   │   └───__pycache__
+│   │           json_adapter.cpython-313.pyc
+│   │           __init__.cpython-313.pyc
+│   │
+│   └───patients
+│           P20250604230735.json
+│           P20250606222032.json
+│           P20250606232828.json
+│           P20250607143120.json
+│           P20250607194141.json
+│           P20250607204555.json
+│           P20250608200007.json
+│           P20250608200206.json
+│
+├───exports
+├───logs
+│   │   demo_loads.jsonl
+│   │   doctor_reactions.jsonl
+│   │   session_efficiency.jsonl
+│   │   session_times.jsonl
+│   │
+│   └───activity
+│           actions_20250608.jsonl
+│
+└───utils
+    │   analytics_helper.py
+    │   drug_checker.py
+    │   export_tools.py
+    │   medical_validator_v2.py
+    │   pdf_processor.py
+    │   senior_doctor_feedback.py
+    │   silent_tracker.py
+    │   __init__.py
+    │
+    └───__pycache__
+            analytics_helper.cpython-313.pyc
+            drug_checker.cpython-313.pyc
+            export_tools.cpython-313.pyc
+            medical_validator_v2.cpython-313.pyc
+            pdf_processor.cpython-313.pyc
+            senior_doctor_feedback.cpython-313.pyc
+            silent_tracker.cpython-313.pyc
+            __init__.cpython-313.pyc

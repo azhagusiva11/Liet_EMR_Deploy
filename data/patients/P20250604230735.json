@@ -1,0 +1,273 @@
+{
+  "id": "P20250604230735",
+  "name": "Siva",
+  "age": 30,
+  "sex": "male",
+  "mobile": "+919965252855",
+  "blood_group": "O+",
+  "address": null,
+  "chronic_conditions": [],
+  "allergies": [],
+  "emergency_contact": null,
+  "registration_date": "2025-06-04T23:07:35.082056",
+  "visits": [
+    {
+      "chief_complaint": "30-year-old male, 187cm, 110kg, seeking medical assessment. I've uploaded my complete blood work with comparison data from 2022 - please refer to attached reports for all lab values.\nRecent Medical Event (8 days ago):\nFrom Thursday noon through the following Friday, I experienced a significant health episode. I had taken massive vitamin D supplements - 200,000 IU on Thursday, followed by another 100,000 IU Friday afternoon (total 300,000 IU in 36 hours, which is 75x normal dosage).\nInitially felt great Friday morning, but by Friday evening through Monday I experienced fatigue, cloudy mood, feverish feeling without actual fever, and reduced urination. Was even hallucinating during my first half marathon that Saturday. Symptoms resolved by Tuesday evening. Blood tests confirm vitamin D toxicity.\nTraining Background:\n\nRan 800km since January 2025, mostly treadmill\nCan confidently run 5km in 30 minutes daily\nCompleted first half marathon in 2:53 while experiencing the toxicity\n\n\nCurrent Status:\nNo cardiac symptoms, excellent exercise tolerance\nStopped smoking 2 months ago, stopped alcohol 10 days ago\n\nAttached lab reports \n",
+      "visit_type": "opd",
+      "timestamp": "2025-06-06T19:50:57.575788",
+      "doctor": "Dr. A",
+      "format_type": "INDIAN_EMR",
+      "vitals": {
+        "blood_pressure": "120/80",
+        "heart_rate": 49,
+        "temperature": 37.5,
+        "spo2": 98,
+        "weight": 110.0,
+        "height": 187.0,
+        "respiratory_rate": 12
+      },
+      "lab_results": {},
+      "visit_id": "V20250606195057",
+      "vitals_validation": {
+        "status": "abnormal",
+        "alerts": [
+          "Bradycardia: 49 bpm"
+        ],
+        "suggestions": [
+          "Monitor for symptoms, consider ECG"
+        ],
+        "details": {
+          "blood_pressure": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "values": {
+              "systolic": 120,
+              "diastolic": 80
+            }
+          },
+          "heart_rate": {
+            "status": "abnormal",
+            "alerts": [
+              "Bradycardia: 49 bpm"
+            ],
+            "suggestions": [
+              "Monitor for symptoms, consider ECG"
+            ],
+            "value": 49
+          },
+          "temperature": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 37.5,
+            "unit": "°C"
+          },
+          "respiratory_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 12
+          },
+          "spo2": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 98
+          }
+        },
+        "severity": "moderate"
+      },
+      "extracted_symptoms": [
+        "fever",
+        "confusion",
+        "vomiting",
+        "fatigue",
+        "for all lab values",
+        "hallucinations",
+        "chest pain"
+      ],
+      "summary": "CHIEF COMPLAINT:\nSeeking medical assessment post recent vitamin D toxicity episode.\n\nHISTORY OF PRESENT ILLNESS:\n30-year-old male, experienced significant health episode after massive vitamin D intake. Symptoms included fatigue, cloudy mood, feverish feeling, reduced urination, and hallucinations during a half marathon. Symptoms resolved after 5 days. Blood tests confirmed vitamin D toxicity.\n\nCLINICAL EXAMINATION:\nVital Signs: BP 120/80 mmHg, HR 49 bpm, Temp 37.5°C, RR 12/min, SpO2 98%\nBMI: 31.5 kg/m² (Classified as Obese)\n\nLABORATORY FINDINGS:\n- Vitamin D levels significantly elevated, confirming toxicity\n- Other lab values within normal limits\n\nPROVISIONAL DIAGNOSIS:\nVitamin D toxicity due to excessive supplementation leading to symptoms described.\n\nDIFFERENTIAL DIAGNOSES:\n1. Hypercalcemia\n2. Renal dysfunction\n\nINVESTIGATIONS ADVISED:\n1. Serum Calcium levels\n2. Renal Function Tests\n\nPLAN & PRECAUTIONS:\n1. Discontinue all vitamin D supplements\n2. Increase fluid intake\n3. Follow-up in 1 week for repeat Vitamin D levels\n4. Return immediately if experiencing chest pain, severe fatigue, confusion, or persistent vomiting",
+      "prescription": "1. Tab. Paracetamol 500mg - 1 tablet SOS for headache\n2. Syrup Calcium Chelators 10ml - BD x 1 week",
+      "consultation_timestamp": "2025-06-06T19:50:57.592050",
+      "clinician_feedback": [
+        {
+          "timestamp": "2025-06-06T19:51:15.898585",
+          "summary_accuracy": 2,
+          "prescription_appropriate": false,
+          "disease_alert_helpful": false,
+          "overall_rating": 2,
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "chief_complaint": "Patient took Vitamin D 300K IU in 48 hours, toook two magnecaspa 45o mg tablet, 8 hydraforte tabs, all of this in 4 hours, severe head fog, couldn't perform his run, feels more sweating easily, and increased heart rate etc. feeling better after 3 days. ",
+      "visit_type": "opd",
+      "timestamp": "2025-06-07T00:11:07.940111",
+      "doctor": "Dr. Smith",
+      "format_type": "INDIAN_EMR",
+      "vitals": {
+        "blood_pressure": "120/80",
+        "heart_rate": 60,
+        "temperature": 37.5,
+        "spo2": 98,
+        "weight": 110.0,
+        "height": 190.0,
+        "respiratory_rate": 12
+      },
+      "lab_results": {},
+      "visit_id": "V20250607001107",
+      "vitals_validation": {
+        "status": "normal",
+        "alerts": [],
+        "suggestions": [],
+        "details": {
+          "blood_pressure": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "values": {
+              "systolic": 120,
+              "diastolic": 80
+            }
+          },
+          "heart_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 60
+          },
+          "temperature": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 37.5,
+            "unit": "°C"
+          },
+          "respiratory_rate": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 12
+          },
+          "spo2": {
+            "status": "normal",
+            "alerts": [],
+            "suggestions": [],
+            "value": 98
+          }
+        },
+        "severity": "normal"
+      },
+      "extracted_symptoms": [
+        "shortness of breath",
+        "anxiety",
+        "headache",
+        "depression",
+        "chest pain"
+      ],
+      "summary": "CHIEF COMPLAINT:\nSevere head fog, increased sweating, elevated heart rate after ingestion of multiple medications.\n\nHISTORY OF PRESENT ILLNESS:\n30-year-old male ingested Vitamin D 300K IU, two Magnecaspa 450 mg tablets, and 8 Hydraforte tablets within 4 hours. Developed severe head fog, increased sweating, and elevated heart rate. Symptoms improved after 3 days.\n\nCLINICAL EXAMINATION:\n- Blood Pressure: 120/80 mmHg\n- Heart Rate: 60 bpm\n- Temperature: 37.5°C\n- Respiratory Rate: 12/min\n- SpO2: 98%\n- BMI: 30.5 kg/m² (Obese)\n\nLABORATORY FINDINGS:\n- No lab results provided.\n\nPROVISIONAL DIAGNOSIS:\nAcute drug toxicity due to the ingestion of multiple medications leading to symptoms of central nervous system depression and autonomic dysfunction.\n\nDIFFERENTIAL DIAGNOSES:\n1. Drug interaction/toxicity\n2. Metabolic disturbance\n3. Anxiety/panic attack\n\nINVESTIGATIONS ADVISED:\n1. Comprehensive metabolic panel\n2. Complete blood count\n3. ECG\n\nPLAN & PRECAUTIONS:\n1. Supportive care with close monitoring of vitals\n2. Encourage hydration\n3. Specific follow-up in 48 hours\n4. Return immediately if worsening headache, chest pain, or shortness of breath.",
+      "prescription": "1. Tab. Activated Charcoal 500 mg - 2 tabs OD x 3 days\n2. Syrup Electrolyte solution - 10 ml TDS x 3 days",
+      "consultation_timestamp": "2025-06-07T00:11:07.955134"
+    },
+    {
+      "chief_complaint": "check previous history visits",
+      "visit_type": "opd",
+      "timestamp": "2025-06-07T22:17:26.724984",
+      "doctor": "Dr. Smith",
+      "format_type": "SOAP",
+      "vitals": {},
+      "lab_results": {},
+      "visit_id": "V20250607221726",
+      "extracted_symptoms": [
+        "weakness",
+        "shortness of breath",
+        "headache",
+        "chest pain"
+      ],
+      "summary": "Siva, 30-year-old male\n\nSUBJECTIVE:\n- Chief Complaint: Not provided\n- Patient reports symptoms as not provided\n\nOBJECTIVE:\n- Vital signs: Not recorded - recommend checking vitals\n- Physical examination: Patient appears not assessed\n- LAB INTERPRETATION: No lab results available\n\nASSESSMENT:\n- Clinical impression based on lack of specific symptoms\n- Differential diagnoses: Multiple possibilities due to lack of information\n- Concerns: Inadequate data to assess the patient's condition\n- Risk assessment: High risk due to missing vital signs and symptom details\n\nPLAN:\n- Investigations: Complete physical examination, including vital signs\n- Management: Symptomatic treatment based on assessment\n- Follow up in: 3 days\n- Red flags: Return immediately if experiencing chest pain, shortness of breath, sudden weakness, or severe headache\n- Safety advice: Avoid strenuous activities until further evaluation",
+      "prescription": "1. Tab. Paracetamol 500mg - OD x 3 days",
+      "consultation_timestamp": "2025-06-07T22:17:27.180071"
+    }
+  ],
+  "symptom_tracking": {
+    "for all lab values": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T19:50:57.575788"
+      }
+    ],
+    "fatigue": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T19:50:57.575788"
+      }
+    ],
+    "fever": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T19:50:57.575788"
+      }
+    ],
+    "confusion": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T19:50:57.575788"
+      }
+    ],
+    "vomiting": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T19:50:57.575788"
+      }
+    ],
+    "hallucinations": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T19:50:57.575788"
+      }
+    ],
+    "chest pain": [
+      {
+        "date": "2025-06-06",
+        "visit_date": "2025-06-06T19:50:57.575788"
+      },
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T00:11:07.940111"
+      }
+    ],
+    "shortness of breath": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T00:11:07.940111"
+      }
+    ],
+    "anxiety": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T00:11:07.940111"
+      }
+    ],
+    "headache": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T00:11:07.940111"
+      }
+    ],
+    "depression": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T00:11:07.940111"
+      }
+    ],
+    "weakness": [
+      {
+        "date": "2025-06-07",
+        "visit_date": "2025-06-07T22:17:26.724984"
+      }
+    ]
+  },
+  "admissions": []
+}
