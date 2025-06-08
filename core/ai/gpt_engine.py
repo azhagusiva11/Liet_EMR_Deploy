@@ -55,7 +55,8 @@ class GPTEngine:
         if self.api_key:
             try:
                 from openai import OpenAI
-                self.client = OpenAI(api_key=self.api_key)
+                os.environ["OPENAI_API_KEY"] = self.api_key
+                self.client = OpenAI()
                 logger.info(f"OpenAI API key loaded: {len(self.api_key)} characters")
             except ImportError:
                 logger.error("OpenAI library not installed or import error")
