@@ -33,3 +33,7 @@ streamlit-extras==0.3.6
 watchdog==3.0.0
 
 # Removed difflib2==0.1.0 (does not exist)
+
+# PDF reading - KEEP BOTH
+pypdf==3.17.4
+PyPDF2==3.0.1  # Add this back - pdf_processor.py needs it
