@@ -1,6 +1,6 @@
 """
-GPT Engine for Clinical Summary Generation - LEAN PRODUCTION VERSION
-Enhanced with essential safety features while maintaining simplicity
+GPT Engine for Clinical Summary Generation - FIXED VERSION
+NO HALLUCINATIONS + CONSISTENT FORMATTING
 """
 
 import os
@@ -48,52 +48,31 @@ REMEMBER:
 
 
 class GPTEngine:
-    """Lean GPT engine for clinical summary generation with essential safety features"""
+    """Handles GPT-based clinical summary generation with lab integration"""
     
     def __init__(self):
         self.api_key = os.getenv("OPENAI_API_KEY")
+        self.client = None
+        
         if self.api_key:
             try:
                 from openai import OpenAI
-                os.environ["OPENAI_API_KEY"] = self.api_key
-                self.client = OpenAI()
+                # Initialize with explicit timeout to prevent hanging
+                self.client = OpenAI(
+                    api_key=self.api_key,
+                    timeout=30.0,  # 30 second timeout
+                    max_retries=2  # Retry twice on failure
+                )
                 logger.info(f"OpenAI API key loaded: {len(self.api_key)} characters")
             except ImportError:
                 logger.error("OpenAI library not installed or import error")
                 self.client = None
+            except Exception as e:
+                logger.error(f"Error initializing OpenAI client: {e}")
+                self.client = None
         else:
             logger.warning("OpenAI API key not found in environment")
             self.client = None
-    
-    def _sanitize_input(self, patient_data: Dict) -> Dict:
-        """Ensure all required fields exist with safe defaults"""
-        if not patient_data:
-            patient_data = {}
-            
-        defaults = {
-            'name': 'Patient',
-            'age': 'Unknown',
-            'sex': 'Unknown',
-            'current_vitals': {},
-            'allergies': [],
-            'chronic_conditions': []
-        }
-        
-        # Apply defaults for missing fields
-        for key, default in defaults.items():
-            if key not in patient_data:
-                patient_data[key] = default
-        
-        # Clean string inputs
-        for key in ['name', 'age', 'sex']:
-            if isinstance(patient_data.get(key), str):
-                # Remove potentially dangerous characters
-                patient_data[key] = re.sub(r'[^\w\s\-.,]', '', str(patient_data[key]))
-                # Truncate long inputs
-                if len(patient_data[key]) > 100:
-                    patient_data[key] = patient_data[key][:100]
-        
-        return patient_data
     
     def generate_summary(self, symptoms_text: str, patient_data: Dict = None,
                         include_prescription: bool = True, 
@@ -102,9 +81,6 @@ class GPTEngine:
         if not self.api_key or not self.client:
             logger.error("No API key or client available")
             return self._generate_fallback_summary(symptoms_text, patient_data)
-        
-        # Sanitize input data
-        patient_data = self._sanitize_input(patient_data) if patient_data else {}
         
         # Build patient context WITH LAB RESULTS
         patient_context = self._build_patient_context(patient_data)
@@ -125,7 +101,7 @@ class GPTEngine:
                 ],
                 temperature=0.3,  # Low for consistent medical advice
                 max_tokens=1500,
-                timeout=10  # Add timeout for safety
+                timeout=10  # 10 second timeout per request
             )
             
             full_response = response.choices[0].message.content.strip()
@@ -224,9 +200,9 @@ class GPTEngine:
     
     def _build_prompt(self, patient_context: str, symptoms_text: str, 
                      format_type: str, include_prescription: bool) -> str:
-        """Build the GPT prompt with enhanced anti-hallucination instructions"""
+        """Build the GPT prompt with anti-hallucination instructions"""
         
-        # ENHANCED: Stronger anti-hallucination rules
+        # CRITICAL: Anti-hallucination instructions
         base_rules = """
 ABSOLUTE RULES - VIOLATION MEANS PATIENT HARM:
 1. Document ONLY what is explicitly stated - NO elaboration
@@ -236,9 +212,6 @@ ABSOLUTE RULES - VIOLATION MEANS PATIENT HARM:
 5. NO fictional timelines or backstories
 6. Write "Patient reports..." when documenting history
 7. Be factual, not creative
-8. If information is missing, state "Not provided" or "Not documented"
-9. Don't assume relationships between symptoms unless explicitly stated
-10. Avoid phrases like "started as", "progressed to", "initially" unless patient used these exact words
 """
         
         if format_type == "SOAP":
@@ -312,10 +285,13 @@ PLAN & PRECAUTIONS:
 - When to return immediately
 """
 
-        prescription_instructions = """
+        # CRITICAL FIX: Only ONE prescription section at the END
+        if include_prescription:
+            prescription_instructions = """
 
-PRESCRIPTION FORMAT:
-Write prescription in this EXACT format only:
+===PRESCRIPTION START===
+PRESCRIPTION:
+Write prescription in this EXACT format:
 
 1. Tab. [Drug name] [dose] - [frequency] x [duration]
 2. Syrup/Cap. [Drug name] [dose] - [frequency] x [duration]
@@ -327,8 +303,12 @@ RULES:
 - Check for allergies mentioned above
 - Each line under 60 characters
 - NO explanations in prescription section
-""" if include_prescription else ""
+===PRESCRIPTION END===
+"""
+        else:
+            prescription_instructions = ""
 
+        # Build prompt with clear instruction about prescription placement
         prompt = f"""{patient_context}
 
 CURRENT VISIT - TODAY'S SYMPTOMS:
@@ -339,6 +319,10 @@ DO NOT create any fictional history or previous visit details.
 If the patient mentions a duration (e.g., "for 2 weeks"), simply document it as stated.
 
 {format_instructions}
+
+IMPORTANT: Create the clinical note FIRST following the {format_type} format above.
+Then, AFTER completing the entire clinical note, add the prescription section at the very END.
+DO NOT include prescription within the clinical note sections.
 {prescription_instructions}"""
 
         return prompt
@@ -383,33 +367,56 @@ If the patient mentions a duration (e.g., "for 2 weeks"), simply document it as 
         return summary.strip()
     
     def _extract_prescription(self, full_response: str) -> str:
-        """Extract prescription section from response"""
+        """Extract prescription section from response - FIXED for double prescription issue"""
         
         prescription_text = ""
         
-        # Look for prescription markers
-        markers = ['PRESCRIPTION:', 'Prescription:', 'TREATMENT:', 'MEDICATIONS:', 
-                  '===PRESCRIPTION', 'Rx:', 'PRESCRIPTION FORMAT:']
+        # Look for prescription markers INCLUDING the new delimiter
+        markers = [
+            '===PRESCRIPTION START===', 
+            'PRESCRIPTION:', 'Prescription:', 
+            'TREATMENT:', 'MEDICATIONS:', 
+            '===PRESCRIPTION', 'Rx:', 
+            'PRESCRIPTION FORMAT:'
+        ]
         
         for marker in markers:
             if marker in full_response:
                 # Split at the marker and take everything after
                 parts = full_response.split(marker)
                 if len(parts) > 1:
-                    prescription_text = parts[1].strip()
-                    # Stop at next section if any
-                    for stop_marker in ['CRITICAL', 'PLAN:', 'ASSESSMENT:', 'SUBJECTIVE:', 
-                                      'OBJECTIVE:', '===', 'Note:', 'SAFETY ADVICE', 
-                                      'PATTERNS', 'WHAT COULD GO WRONG', 'TEACHING',
-                                      'Remember to:', 'IMPORTANT', 'Follow-up', 'RULES:',
-                                      'Doctor\'s', 'Signature']:
+                    # Get the last occurrence to avoid duplicates
+                    prescription_text = parts[-1].strip()
+                    
+                    # Stop at end markers or next section
+                    stop_markers = [
+                        '===PRESCRIPTION END===',
+                        'CRITICAL', 'PLAN:', 'ASSESSMENT:', 'SUBJECTIVE:', 
+                        'OBJECTIVE:', '===', 'Note:', 'SAFETY ADVICE', 
+                        'PATTERNS', 'WHAT COULD GO WRONG', 'TEACHING',
+                        'Remember to:', 'IMPORTANT', 'Follow-up', 'RULES:',
+                        'Doctor\'s', 'Signature', 'CHIEF COMPLAINT', 
+                        'HISTORY OF PRESENT ILLNESS', 'CLINICAL EXAMINATION'
+                    ]
+                    
+                    for stop_marker in stop_markers:
                         if stop_marker in prescription_text:
                             prescription_text = prescription_text.split(stop_marker)[0].strip()
+                            break
                     break
         
         if not prescription_text:
             logger.warning("No prescription found in GPT response")
             return ""
+        
+        # Clean up the prescription - remove any format-specific headers
+        lines_to_remove = [
+            'PRESCRIPTION:', 'Prescription:', 'MEDICATIONS:', 
+            'TREATMENT:', 'Rx:', 'PRESCRIPTION FORMAT:'
+        ]
+        
+        for line_to_remove in lines_to_remove:
+            prescription_text = prescription_text.replace(line_to_remove, '').strip()
         
         # Clean up the prescription
         cleaned_lines = []
@@ -426,7 +433,8 @@ If the patient mentions a duration (e.g., "for 2 weeks"), simply document it as 
                 'follow-up', 'appointment', 'avoid', 'hydration',
                 'ms.', 'mr.', 'patient', 'symptoms', 'return immediately',
                 'remember', 'important', 'adjust', 'consider', 'based on',
-                'write prescription', 'format', 'exact', 'rules'
+                'write prescription', 'format', 'exact', 'rules',
+                'write in this', 'exact format', 'rules:', 'format:'
             ]
             
             if any(phrase in line.lower() for phrase in skip_phrases):
@@ -541,10 +549,6 @@ If the patient mentions a duration (e.g., "for 2 weeks"), simply document it as 
         
         # Check age for pediatric dosing
         age = patient_data.get('age', 30) if patient_data else 30
-        try:
-            age = int(age)
-        except:
-            age = 30
         is_pediatric = age < 12
         
         # Check for common symptoms and add appropriate medications
