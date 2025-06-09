@@ -52,14 +52,28 @@ class GPTEngine:
     
     def __init__(self):
         self.api_key = os.getenv("OPENAI_API_KEY")
+        self.client = None
+        self.api_version = None
+        
         if self.api_key:
+            # Try new client first
             try:
                 from openai import OpenAI
                 self.client = OpenAI(api_key=self.api_key)
-                logger.info(f"OpenAI API key loaded: {len(self.api_key)} characters")
-            except ImportError:
-                logger.error("OpenAI library not installed or import error")
-                self.client = None
+                self.api_version = "new"
+                logger.info(f"OpenAI API key loaded with new client: {len(self.api_key)} characters")
+            except Exception as e:
+                logger.error(f"OpenAI new client init failed: {e}")
+                # Fallback to old API
+                try:
+                    import openai
+                    openai.api_key = self.api_key
+                    self.client = openai
+                    self.api_version = "old"
+                    logger.info("Using OpenAI old API style as fallback")
+                except Exception as e2:
+                    logger.error(f"Both OpenAI init methods failed: {e2}")
+                    self.client = None
         else:
             logger.warning("OpenAI API key not found in environment")
             self.client = None
@@ -80,20 +94,38 @@ class GPTEngine:
         
         try:
             logger.info(f"Calling OpenAI API with senior physician persona")
-            response = self.client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {
-                        "role": "system", 
-                        "content": SENIOR_PHYSICIAN_PERSONA
-                    },
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.3,  # Low for consistent medical advice
-                max_tokens=1500
-            )
             
-            full_response = response.choices[0].message.content.strip()
+            # Handle different API versions
+            if self.api_version == "new":
+                response = self.client.chat.completions.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {
+                            "role": "system", 
+                            "content": SENIOR_PHYSICIAN_PERSONA
+                        },
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=0.3,  # Low for consistent medical advice
+                    max_tokens=1500
+                )
+                full_response = response.choices[0].message.content.strip()
+            else:
+                # Old API style
+                response = self.client.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {
+                            "role": "system", 
+                            "content": SENIOR_PHYSICIAN_PERSONA
+                        },
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=0.3,
+                    max_tokens=1500
+                )
+                full_response = response['choices'][0]['message']['content'].strip()
+            
             logger.info("OpenAI API call successful")
             logger.debug(f"Full GPT response: {full_response}")
             
