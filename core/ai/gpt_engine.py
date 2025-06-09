@@ -8,9 +8,18 @@ import re
 from typing import Dict, Optional, List
 import logging
 from dotenv import load_dotenv
+import hashlib
 
 logger = logging.getLogger(__name__)
+
+# Load environment variables
 load_dotenv()
+
+# Validate environment on startup
+if not os.getenv("OPENAI_API_KEY"):
+    logger.warning("⚠️ OPENAI_API_KEY not found in environment - will use fallback mode")
+else:
+    logger.info("✅ OpenAI API key found")
 
 # Senior physician persona for natural safety-first thinking
 SENIOR_PHYSICIAN_PERSONA = """
@@ -53,6 +62,7 @@ class GPTEngine:
     def __init__(self):
         self.api_key = os.getenv("OPENAI_API_KEY")
         self.client = None
+        self.summary_cache = {}  # Simple in-memory cache
         
         if self.api_key:
             try:
@@ -78,6 +88,19 @@ class GPTEngine:
                         include_prescription: bool = True, 
                         format_type: str = "SOAP") -> Dict:
         """Generate clinical summary using GPT with senior doctor thinking"""
+        
+        # Create cache key from symptoms + patient age/sex + format
+        cache_key = self._create_cache_key(symptoms_text, patient_data, format_type)
+        
+        # Check cache first
+        if cache_key in self.summary_cache:
+            logger.info("Returning cached summary for consistency")
+            cached = self.summary_cache[cache_key]
+            # Always regenerate prescription for safety (drugs/allergies might change)
+            if include_prescription and self.client:
+                cached['prescription'] = self._regenerate_prescription_only(symptoms_text, patient_data)
+            return cached
+        
         if not self.api_key or not self.client:
             logger.error("No API key or client available")
             return self._generate_fallback_summary(symptoms_text, patient_data)
@@ -99,7 +122,8 @@ class GPTEngine:
                     },
                     {"role": "user", "content": prompt}
                 ],
-                temperature=0.3,  # Low for consistent medical advice
+                temperature=0.1,  # Ultra-low for maximum consistency
+                seed=42,  # Fixed seed for more deterministic outputs
                 max_tokens=1500,
                 timeout=10  # 10 second timeout per request
             )
@@ -116,12 +140,25 @@ class GPTEngine:
                 prescription = self._extract_prescription(full_response)
                 logger.debug(f"Extracted prescription: {prescription}")
             
-            return {
+            result = {
                 "success": True,
                 "summary": summary,
                 "prescription": prescription,
                 "format": format_type
             }
+            
+            # Cache the summary (but not prescription for safety)
+            cache_result = result.copy()
+            cache_result['prescription'] = ''  # Don't cache prescription
+            self.summary_cache[cache_key] = cache_result
+            
+            # Limit cache size to prevent memory issues
+            if len(self.summary_cache) > 100:
+                # Remove oldest entries
+                oldest_key = list(self.summary_cache.keys())[0]
+                del self.summary_cache[oldest_key]
+            
+            return result
             
         except Exception as e:
             logger.error(f"GPT API error: {e}")
@@ -589,3 +626,41 @@ DO NOT include prescription within the clinical note sections.
             prescription_lines.append(f"{len(prescription_lines)+1}. Adequate rest and hydration")
         
         return '\n'.join(prescription_lines) if prescription_lines else "Symptomatic treatment as needed"
+    
+    def _create_cache_key(self, symptoms: str, patient_data: Dict, format_type: str) -> str:
+        """Create a cache key for summary consistency"""
+        # Normalize symptoms
+        symptoms_normalized = ' '.join(sorted(symptoms.lower().split()))
+        
+        # Include relevant patient data
+        age_group = "child" if patient_data and patient_data.get('age', 30) < 12 else "adult"
+        sex = patient_data.get('sex', 'unknown') if patient_data else 'unknown'
+        
+        # Create hash
+        key_string = f"{symptoms_normalized}_{age_group}_{sex}_{format_type}"
+        return hashlib.md5(key_string.encode()).hexdigest()
+    
+    def _regenerate_prescription_only(self, symptoms: str, patient_data: Dict) -> str:
+        """Regenerate just the prescription part for cached summaries"""
+        try:
+            prompt = f"""
+Based on these symptoms: {symptoms}
+Patient: {patient_data.get('age', 'Unknown')} years, {patient_data.get('sex', 'Unknown')}
+Allergies: {', '.join(patient_data.get('allergies', [])) if patient_data else 'None'}
+
+Generate ONLY a prescription in this format:
+1. Tab. [Drug name] [dose] - [frequency] x [duration]
+
+Maximum 5 medications. Consider patient age and allergies.
+"""
+            response = self.client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.1,
+                max_tokens=200,
+                timeout=10
+            )
+            
+            return response.choices[0].message.content.strip()
+        except:
+            return self._generate_fallback_prescription(symptoms, patient_data)
