@@ -8,18 +8,9 @@ import re
 from typing import Dict, Optional, List
 import logging
 from dotenv import load_dotenv
-import hashlib
 
 logger = logging.getLogger(__name__)
-
-# Load environment variables
 load_dotenv()
-
-# Validate environment on startup
-if not os.getenv("OPENAI_API_KEY"):
-    logger.warning("⚠️ OPENAI_API_KEY not found in environment - will use fallback mode")
-else:
-    logger.info("✅ OpenAI API key found")
 
 # Senior physician persona for natural safety-first thinking
 SENIOR_PHYSICIAN_PERSONA = """
@@ -61,24 +52,13 @@ class GPTEngine:
     
     def __init__(self):
         self.api_key = os.getenv("OPENAI_API_KEY")
-        self.client = None
-        self.summary_cache = {}  # Simple in-memory cache
-        
         if self.api_key:
             try:
                 from openai import OpenAI
-                # Initialize with explicit timeout to prevent hanging
-                self.client = OpenAI(
-                    api_key=self.api_key,
-                    timeout=30.0,  # 30 second timeout
-                    max_retries=2  # Retry twice on failure
-                )
+                self.client = OpenAI(api_key=self.api_key)
                 logger.info(f"OpenAI API key loaded: {len(self.api_key)} characters")
             except ImportError:
                 logger.error("OpenAI library not installed or import error")
-                self.client = None
-            except Exception as e:
-                logger.error(f"Error initializing OpenAI client: {e}")
                 self.client = None
         else:
             logger.warning("OpenAI API key not found in environment")
@@ -88,19 +68,6 @@ class GPTEngine:
                         include_prescription: bool = True, 
                         format_type: str = "SOAP") -> Dict:
         """Generate clinical summary using GPT with senior doctor thinking"""
-        
-        # Create cache key from symptoms + patient age/sex + format
-        cache_key = self._create_cache_key(symptoms_text, patient_data, format_type)
-        
-        # Check cache first
-        if cache_key in self.summary_cache:
-            logger.info("Returning cached summary for consistency")
-            cached = self.summary_cache[cache_key]
-            # Always regenerate prescription for safety (drugs/allergies might change)
-            if include_prescription and self.client:
-                cached['prescription'] = self._regenerate_prescription_only(symptoms_text, patient_data)
-            return cached
-        
         if not self.api_key or not self.client:
             logger.error("No API key or client available")
             return self._generate_fallback_summary(symptoms_text, patient_data)
@@ -122,9 +89,8 @@ class GPTEngine:
                     },
                     {"role": "user", "content": prompt}
                 ],
-                temperature=0.1,  # Ultra-low for maximum consistency
-                max_tokens=1500,
-                timeout=10  # 10 second timeout per request
+                temperature=0.3,  # Low for consistent medical advice
+                max_tokens=1500
             )
             
             full_response = response.choices[0].message.content.strip()
@@ -139,25 +105,12 @@ class GPTEngine:
                 prescription = self._extract_prescription(full_response)
                 logger.debug(f"Extracted prescription: {prescription}")
             
-            result = {
+            return {
                 "success": True,
                 "summary": summary,
                 "prescription": prescription,
                 "format": format_type
             }
-            
-            # Cache the summary (but not prescription for safety)
-            cache_result = result.copy()
-            cache_result['prescription'] = ''  # Don't cache prescription
-            self.summary_cache[cache_key] = cache_result
-            
-            # Limit cache size to prevent memory issues
-            if len(self.summary_cache) > 100:
-                # Remove oldest entries
-                oldest_key = list(self.summary_cache.keys())[0]
-                del self.summary_cache[oldest_key]
-            
-            return result
             
         except Exception as e:
             logger.error(f"GPT API error: {e}")
@@ -321,13 +274,10 @@ PLAN & PRECAUTIONS:
 - When to return immediately
 """
 
-        # CRITICAL FIX: Only ONE prescription section at the END
-        if include_prescription:
-            prescription_instructions = """
+        prescription_instructions = """
 
-===PRESCRIPTION START===
-PRESCRIPTION:
-Write prescription in this EXACT format:
+PRESCRIPTION FORMAT:
+Write prescription in this EXACT format only:
 
 1. Tab. [Drug name] [dose] - [frequency] x [duration]
 2. Syrup/Cap. [Drug name] [dose] - [frequency] x [duration]
@@ -339,12 +289,8 @@ RULES:
 - Check for allergies mentioned above
 - Each line under 60 characters
 - NO explanations in prescription section
-===PRESCRIPTION END===
-"""
-        else:
-            prescription_instructions = ""
+""" if include_prescription else ""
 
-        # Build prompt with clear instruction about prescription placement
         prompt = f"""{patient_context}
 
 CURRENT VISIT - TODAY'S SYMPTOMS:
@@ -355,10 +301,6 @@ DO NOT create any fictional history or previous visit details.
 If the patient mentions a duration (e.g., "for 2 weeks"), simply document it as stated.
 
 {format_instructions}
-
-IMPORTANT: Create the clinical note FIRST following the {format_type} format above.
-Then, AFTER completing the entire clinical note, add the prescription section at the very END.
-DO NOT include prescription within the clinical note sections.
 {prescription_instructions}"""
 
         return prompt
@@ -403,56 +345,33 @@ DO NOT include prescription within the clinical note sections.
         return summary.strip()
     
     def _extract_prescription(self, full_response: str) -> str:
-        """Extract prescription section from response - FIXED for double prescription issue"""
+        """Extract prescription section from response"""
         
         prescription_text = ""
         
-        # Look for prescription markers INCLUDING the new delimiter
-        markers = [
-            '===PRESCRIPTION START===', 
-            'PRESCRIPTION:', 'Prescription:', 
-            'TREATMENT:', 'MEDICATIONS:', 
-            '===PRESCRIPTION', 'Rx:', 
-            'PRESCRIPTION FORMAT:'
-        ]
+        # Look for prescription markers
+        markers = ['PRESCRIPTION:', 'Prescription:', 'TREATMENT:', 'MEDICATIONS:', 
+                  '===PRESCRIPTION', 'Rx:', 'PRESCRIPTION FORMAT:']
         
         for marker in markers:
             if marker in full_response:
                 # Split at the marker and take everything after
                 parts = full_response.split(marker)
                 if len(parts) > 1:
-                    # Get the last occurrence to avoid duplicates
-                    prescription_text = parts[-1].strip()
-                    
-                    # Stop at end markers or next section
-                    stop_markers = [
-                        '===PRESCRIPTION END===',
-                        'CRITICAL', 'PLAN:', 'ASSESSMENT:', 'SUBJECTIVE:', 
-                        'OBJECTIVE:', '===', 'Note:', 'SAFETY ADVICE', 
-                        'PATTERNS', 'WHAT COULD GO WRONG', 'TEACHING',
-                        'Remember to:', 'IMPORTANT', 'Follow-up', 'RULES:',
-                        'Doctor\'s', 'Signature', 'CHIEF COMPLAINT', 
-                        'HISTORY OF PRESENT ILLNESS', 'CLINICAL EXAMINATION'
-                    ]
-                    
-                    for stop_marker in stop_markers:
+                    prescription_text = parts[1].strip()
+                    # Stop at next section if any
+                    for stop_marker in ['CRITICAL', 'PLAN:', 'ASSESSMENT:', 'SUBJECTIVE:', 
+                                      'OBJECTIVE:', '===', 'Note:', 'SAFETY ADVICE', 
+                                      'PATTERNS', 'WHAT COULD GO WRONG', 'TEACHING',
+                                      'Remember to:', 'IMPORTANT', 'Follow-up', 'RULES:',
+                                      'Doctor\'s', 'Signature']:
                         if stop_marker in prescription_text:
                             prescription_text = prescription_text.split(stop_marker)[0].strip()
-                            break
                     break
         
         if not prescription_text:
             logger.warning("No prescription found in GPT response")
             return ""
-        
-        # Clean up the prescription - remove any format-specific headers
-        lines_to_remove = [
-            'PRESCRIPTION:', 'Prescription:', 'MEDICATIONS:', 
-            'TREATMENT:', 'Rx:', 'PRESCRIPTION FORMAT:'
-        ]
-        
-        for line_to_remove in lines_to_remove:
-            prescription_text = prescription_text.replace(line_to_remove, '').strip()
         
         # Clean up the prescription
         cleaned_lines = []
@@ -469,8 +388,7 @@ DO NOT include prescription within the clinical note sections.
                 'follow-up', 'appointment', 'avoid', 'hydration',
                 'ms.', 'mr.', 'patient', 'symptoms', 'return immediately',
                 'remember', 'important', 'adjust', 'consider', 'based on',
-                'write prescription', 'format', 'exact', 'rules',
-                'write in this', 'exact format', 'rules:', 'format:'
+                'write prescription', 'format', 'exact', 'rules'
             ]
             
             if any(phrase in line.lower() for phrase in skip_phrases):
@@ -625,41 +543,3 @@ DO NOT include prescription within the clinical note sections.
             prescription_lines.append(f"{len(prescription_lines)+1}. Adequate rest and hydration")
         
         return '\n'.join(prescription_lines) if prescription_lines else "Symptomatic treatment as needed"
-    
-    def _create_cache_key(self, symptoms: str, patient_data: Dict, format_type: str) -> str:
-        """Create a cache key for summary consistency"""
-        # Normalize symptoms
-        symptoms_normalized = ' '.join(sorted(symptoms.lower().split()))
-        
-        # Include relevant patient data
-        age_group = "child" if patient_data and patient_data.get('age', 30) < 12 else "adult"
-        sex = patient_data.get('sex', 'unknown') if patient_data else 'unknown'
-        
-        # Create hash
-        key_string = f"{symptoms_normalized}_{age_group}_{sex}_{format_type}"
-        return hashlib.md5(key_string.encode()).hexdigest()
-    
-    def _regenerate_prescription_only(self, symptoms: str, patient_data: Dict) -> str:
-        """Regenerate just the prescription part for cached summaries"""
-        try:
-            prompt = f"""
-Based on these symptoms: {symptoms}
-Patient: {patient_data.get('age', 'Unknown')} years, {patient_data.get('sex', 'Unknown')}
-Allergies: {', '.join(patient_data.get('allergies', [])) if patient_data else 'None'}
-
-Generate ONLY a prescription in this format:
-1. Tab. [Drug name] [dose] - [frequency] x [duration]
-
-Maximum 5 medications. Consider patient age and allergies.
-"""
-            response = self.client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,
-                max_tokens=200,
-                timeout=10
-            )
-            
-            return response.choices[0].message.content.strip()
-        except:
-            return self._generate_fallback_prescription(symptoms, patient_data)
