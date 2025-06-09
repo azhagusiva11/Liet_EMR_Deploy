@@ -53,42 +53,18 @@ class GPTEngine:
     def __init__(self):
         self.api_key = os.getenv("OPENAI_API_KEY")
         self.client = None
-        self.api_version = None
-        
-        # Debug logging
-        logger.info(f"=== GPT Engine Initialization ===")
-        logger.info(f"Python version: {os.sys.version}")
-        logger.info(f"API key found: {'YES' if self.api_key else 'NO'}")
-        if self.api_key:
-            logger.info(f"API key format: {self.api_key[:8]}...{self.api_key[-4:]}")
         
         if self.api_key:
-            # Try new client first
             try:
-                logger.info("Attempting new OpenAI client import...")
-                from openai import OpenAI
-                logger.info("Import successful, creating client...")
-                self.client = OpenAI(api_key=self.api_key)
-                self.api_version = "new"
-                logger.info(f"✅ OpenAI new client initialized successfully")
+                import openai
+                openai.api_key = self.api_key
+                self.client = openai
+                logger.info(f"OpenAI API key loaded: {len(self.api_key)} characters")
             except Exception as e:
-                logger.error(f"❌ New client failed: {type(e).__name__}: {str(e)}")
-                
-                # Fallback to old API
-                try:
-                    logger.info("Attempting old OpenAI API import...")
-                    import openai
-                    logger.info("Import successful, setting API key...")
-                    openai.api_key = self.api_key
-                    self.client = openai
-                    self.api_version = "old"
-                    logger.info("✅ OpenAI old API initialized successfully")
-                except Exception as e2:
-                    logger.error(f"❌ Old API failed: {type(e2).__name__}: {str(e2)}")
-                    self.client = None
+                logger.error(f"OpenAI init failed: {e}")
+                self.client = None
         else:
-            logger.error("❌ No OpenAI API key found in environment")
-            logger.info(f"Environment variables: {list(os.environ.keys())}")
+            logger.warning("OpenAI API key not found in environment")
             self.client = None
     
     def generate_summary(self, symptoms_text: str, patient_data: Dict = None,
@@ -106,38 +82,20 @@ class GPTEngine:
         prompt = self._build_prompt(patient_context, symptoms_text, format_type, include_prescription)
         
         try:
-            logger.info(f"Calling OpenAI API with senior physician persona")
+            response = self.client.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {
+                        "role": "system", 
+                        "content": SENIOR_PHYSICIAN_PERSONA
+                    },
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.3,  # Low for consistent medical advice
+                max_tokens=1500
+            )
             
-            # Handle different API versions
-            if self.api_version == "new":
-                response = self.client.chat.completions.create(
-                    model="gpt-3.5-turbo",
-                    messages=[
-                        {
-                            "role": "system", 
-                            "content": SENIOR_PHYSICIAN_PERSONA
-                        },
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.3,  # Low for consistent medical advice
-                    max_tokens=1500
-                )
-                full_response = response.choices[0].message.content.strip()
-            else:
-                # Old API style
-                response = self.client.ChatCompletion.create(
-                    model="gpt-3.5-turbo",
-                    messages=[
-                        {
-                            "role": "system", 
-                            "content": SENIOR_PHYSICIAN_PERSONA
-                        },
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.3,
-                    max_tokens=1500
-                )
-                full_response = response['choices'][0]['message']['content'].strip()
+            full_response = response['choices'][0]['message']['content'].strip()
             
             logger.info("OpenAI API call successful")
             logger.debug(f"Full GPT response: {full_response}")
