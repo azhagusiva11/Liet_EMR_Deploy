@@ -123,7 +123,6 @@ class GPTEngine:
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.1,  # Ultra-low for maximum consistency
-                seed=42,  # Fixed seed for more deterministic outputs
                 max_tokens=1500,
                 timeout=10  # 10 second timeout per request
             )
