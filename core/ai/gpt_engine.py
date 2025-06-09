@@ -55,27 +55,40 @@ class GPTEngine:
         self.client = None
         self.api_version = None
         
+        # Debug logging
+        logger.info(f"=== GPT Engine Initialization ===")
+        logger.info(f"Python version: {os.sys.version}")
+        logger.info(f"API key found: {'YES' if self.api_key else 'NO'}")
+        if self.api_key:
+            logger.info(f"API key format: {self.api_key[:8]}...{self.api_key[-4:]}")
+        
         if self.api_key:
             # Try new client first
             try:
+                logger.info("Attempting new OpenAI client import...")
                 from openai import OpenAI
+                logger.info("Import successful, creating client...")
                 self.client = OpenAI(api_key=self.api_key)
                 self.api_version = "new"
-                logger.info(f"OpenAI API key loaded with new client: {len(self.api_key)} characters")
+                logger.info(f"✅ OpenAI new client initialized successfully")
             except Exception as e:
-                logger.error(f"OpenAI new client init failed: {e}")
+                logger.error(f"❌ New client failed: {type(e).__name__}: {str(e)}")
+                
                 # Fallback to old API
                 try:
+                    logger.info("Attempting old OpenAI API import...")
                     import openai
+                    logger.info("Import successful, setting API key...")
                     openai.api_key = self.api_key
                     self.client = openai
                     self.api_version = "old"
-                    logger.info("Using OpenAI old API style as fallback")
+                    logger.info("✅ OpenAI old API initialized successfully")
                 except Exception as e2:
-                    logger.error(f"Both OpenAI init methods failed: {e2}")
+                    logger.error(f"❌ Old API failed: {type(e2).__name__}: {str(e2)}")
                     self.client = None
         else:
-            logger.warning("OpenAI API key not found in environment")
+            logger.error("❌ No OpenAI API key found in environment")
+            logger.info(f"Environment variables: {list(os.environ.keys())}")
             self.client = None
     
     def generate_summary(self, symptoms_text: str, patient_data: Dict = None,
